@@ -1,6 +1,6 @@
-# Duka Kuu Ecommerce Backend
+# Duka Kuu Ecommerce Dashboard
 
-E-commerce administrative backend dashboard for the Duka Kuu project.
+E-commerce administrative dashboard for the Duka Kuu project.
 
 The project also puts into practice proper management of Git by organizing code into development, staging and production branches so that there is always a version of the code ready to go.
 
