@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import type { Metadata } from "next";
 
 import "@/app/styles/globals.css";
@@ -12,15 +12,15 @@ export const metadata: Metadata = {
     icon: "/logo.png",
     shortcut: "/logo/png",
   },
-  title: "Next.JS Starter Template App",
+  title: "Duka Kuu Ecommerce Dashboard",
   description:
-    "Starter template for Next.JS projects using TypeScript and Shadcn/UI.",
+    "Power your online store with Duka Kuu's robust e-commerce dashboard. Streamline inventory management, order processing, and more.",
 };
 
 const RootLayout = ({ children }: Children) => {
   return (
     <html lang="en">
-      <body className="font-opensans scroll-smooth antialiased">
+      <body className="scroll-smooth font-opensans antialiased">
         <header>Header Section</header>
 
         <main>{children}</main>
