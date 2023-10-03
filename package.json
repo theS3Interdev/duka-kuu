@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.25.1",
+    "@hookform/resolvers": "3.1.1",
     "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-slot": "^1.0.2",
     "@types/node": "20.8.2",
     "@types/react": "18.2.24",
@@ -22,8 +24,10 @@
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "react-hook-form": "7.45.0",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
+    "zod": "3.21.4",
     "zustand": "^4.4.2"
   },
   "devDependencies": {
