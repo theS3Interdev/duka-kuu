@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useStoreModal } from "@/lib/hooks/use-store-modal";
 
@@ -38,7 +40,19 @@ export const StoreModal = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    try {
+      setLoading(true);
+
+      const response = await axios.post("/api/stores", values);
+
+      toast.success("The store has been created.");
+
+      //window.location.assign(`/${response.data.id}`);
+    } catch (error) {
+      toast.error("An unknown error has occurred.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
