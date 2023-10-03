@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ModalProvider } from "@/lib/providers/modal-provider";
+import { ToastProvider } from "@/lib/providers/toast-provider";
 
 import "@/app/styles/globals.css";
 
@@ -26,6 +27,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
     <ClerkProvider>
       <html lang="en">
         <body className="scroll-smooth font-opensans antialiased">
+          <ToastProvider />
           <ModalProvider />
           {children}
           <Analytics />
