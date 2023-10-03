@@ -1,7 +1,9 @@
 import { ReactNode } from "react";
 import type { Metadata } from "next";
-import { ClerkProvider } from "@clerk/nextjs";
+
 import { Analytics } from "@vercel/analytics/react";
+import { ClerkProvider } from "@clerk/nextjs";
+import { ModalProvider } from "@/lib/providers/modal-provider";
 
 import "@/app/styles/globals.css";
 
@@ -24,6 +26,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
     <ClerkProvider>
       <html lang="en">
         <body className="scroll-smooth font-opensans antialiased">
+          <ModalProvider />
           {children}
           <Analytics />
         </body>
