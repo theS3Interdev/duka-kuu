@@ -1,14 +1,11 @@
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import { auth, UserButton } from "@clerk/nextjs";
 
 import prismadb from "@/lib/utils/prismadb";
 
-import { MainNavigation } from "@/components/main-navigation";
-import { StoreSwitcher } from "@/components/store-switcher";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { MainNavigation, StoreSwitcher, ThemeToggle } from "@/components/index";
 
-const NavigationBar = async () => {
+export const NavigationBar = async () => {
   const { userId } = auth();
 
   if (!userId) {
@@ -17,7 +14,7 @@ const NavigationBar = async () => {
 
   const stores = await prismadb.store.findMany({
     where: {
-      userId,
+      userId: userId,
     },
   });
 
@@ -26,9 +23,7 @@ const NavigationBar = async () => {
       <div className="flex h-16 items-center px-4">
         <div className="flex items-center space-x-3">
           {/* logo section start */}
-          <Link href="/">
-            <h1 className="font-montserrat text-xl font-bold">Soko Kuu</h1>
-          </Link>
+          <h1 className="font-montserrat text-xl font-bold">Soko Kuu</h1>
           {/* logo section end */}
 
           {/* store switcher section start */}
@@ -40,7 +35,7 @@ const NavigationBar = async () => {
           {/* main navigation section start */}
         </div>
 
-        <div className="ml-auto flex items-center space-x-4">
+        <div className="ml-auto flex items-center space-x-3">
           <ThemeToggle />
           <UserButton afterSignOutUrl="/" />
         </div>
@@ -48,5 +43,3 @@ const NavigationBar = async () => {
     </div>
   );
 };
-
-export default NavigationBar;

@@ -19,15 +19,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Modal } from "@/components/modal";
+import { Modal } from "@/components/index";
 
-const formSchema = z
-  .object({
-    name: z
-      .string()
-      .min(1, { message: "The e-commerce store must have a name." }),
-  })
-  .nonstrict();
+const formSchema = z.object({
+  name: z
+    .string()
+    .min(1, { message: "The e-commerce store must have a name." }),
+});
 
 export const StoreModal = () => {
   const storeModal = useStoreModal();
@@ -39,11 +37,11 @@ export const StoreModal = () => {
     defaultValues: { name: "" },
   });
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
       setLoading(true);
 
-      const response = await axios.post("/api/stores", values);
+      const response = await axios.post("/api/stores", data);
 
       /* refresh page and redirect user to new store */
       window.location.assign(`/${response.data.id}`);
