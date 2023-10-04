@@ -14,12 +14,12 @@ export async function POST(req: Request) {
 
     /* check if the user has been authenticated */
     if (!userId) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return new NextResponse("Unauthorized.", { status: 401 });
     }
 
     /* check if the user has input a store name */
     if (!name) {
-      return new NextResponse("The e-commerce store must have a name", {
+      return new NextResponse("The e-commerce store must have a name.", {
         status: 400,
       });
     }
@@ -35,6 +35,6 @@ export async function POST(req: Request) {
     return NextResponse.json(store);
   } catch (error) {
     console.log("[STORES_POST]", error);
-    return new NextResponse("Internal server error", { status: 500 });
+    return new NextResponse("Internal server error.", { status: 500 });
   }
 }
