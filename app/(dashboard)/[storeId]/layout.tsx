@@ -4,7 +4,7 @@ import { auth } from "@clerk/nextjs";
 
 import prismadb from "@/lib/utils/prismadb";
 
-import NavigationBar from "@/components/navigation-bar";
+import { NavigationBar } from "@/components/index";
 
 type DashboardLayoutProps = {
   children: ReactNode;
