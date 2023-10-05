@@ -22,11 +22,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-interface DataTableProps<TData, TValue> {
+type DataTableProps<TData, TValue> = {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   searchKey: string;
-}
+};
 
 export function DataTable<TData, TValue>({
   columns,

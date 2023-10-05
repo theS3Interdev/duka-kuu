@@ -23,19 +23,22 @@ export const HeroClient = ({ data }: HeroClientProps) => {
     <>
       <div className="flex items-center justify-between">
         <Heading
-          title={`Hero Sections (${data.length})`}
+          title={`Hero sections (${data.length})`}
           description="Manage the hero sections of your e-commerce store."
         />
         <Button onClick={() => router.push(`/${params.storeId}/heroes/new`)}>
-          <Plus className="mr-2 h-4 w-4" /> Add New
+          <Plus className="mr-2 h-4 w-4" /> Manage
         </Button>
       </div>
 
-      <Separator />
+      <Separator className="my-3" />
 
       <DataTable searchKey="label" columns={columns} data={data} />
-      <Heading title="API" description="API Calls for Hero Sections." />
-      <Separator />
+
+      <Heading title="API" description="APIs for hero sections." />
+
+      <Separator className="my-3" />
+
       <APIList entityName="heroes" entityIdName="heroId" />
     </>
   );

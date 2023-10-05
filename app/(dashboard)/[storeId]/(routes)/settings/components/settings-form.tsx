@@ -68,7 +68,7 @@ export const SettingsForm = ({ initialData }: SettingsFormProps) => {
       toast.success("E-Commerce store deleted.");
     } catch (error: any) {
       toast.error(
-        "Removed all products and categories before deleting the e-commerce store.",
+        "Removed all products and categories before deleting this e-commerce store.",
       );
     } finally {
       setLoading(false);
@@ -117,7 +117,7 @@ export const SettingsForm = ({ initialData }: SettingsFormProps) => {
         </Button>
       </div>
 
-      <Separator />
+      <Separator className="my-3" />
 
       <Form {...form}>
         <form
@@ -149,7 +149,7 @@ export const SettingsForm = ({ initialData }: SettingsFormProps) => {
         </form>
       </Form>
 
-      <Separator />
+      <Separator className="my-3" />
 
       <APIAlert
         title="NEXT_PUBLIC_API_URL"
