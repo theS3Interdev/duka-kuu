@@ -3,7 +3,7 @@ import { auth } from "@clerk/nextjs";
 
 import prismadb from "@/lib/utils/prismadb";
 
-import { SettingsForm } from "@/components/index";
+import { SettingsForm } from "./components/settings-form";
 
 type SettingsPageProps = {
   params: { storeId: string };

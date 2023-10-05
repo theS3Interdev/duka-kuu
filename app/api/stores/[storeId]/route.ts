@@ -15,17 +15,17 @@ export async function PATCH(
     const { name } = body;
 
     if (!userId) {
-      return new NextResponse("Unauthenticated.", { status: 403 });
+      return new NextResponse("Unauthenticated.", { status: 401 });
     }
 
     if (!name) {
-      return new NextResponse("The e-commerce store must have a name.", {
+      return new NextResponse("The store name is required.", {
         status: 400,
       });
     }
 
     if (!params.storeId) {
-      return new NextResponse("The e-commerce store ID is required.", {
+      return new NextResponse("The store ID is required.", {
         status: 400,
       });
     }
@@ -55,11 +55,11 @@ export async function DELETE(
     const { userId } = auth();
 
     if (!userId) {
-      return new NextResponse("Unauthenticated.", { status: 403 });
+      return new NextResponse("Unauthenticated.", { status: 401 });
     }
 
     if (!params.storeId) {
-      return new NextResponse("The e-commerce store ID is required.", {
+      return new NextResponse("The store ID is required.", {
         status: 400,
       });
     }

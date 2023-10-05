@@ -24,7 +24,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import { AlertModal, APIAlert, Heading } from "@/components/index";
+import { APIAlert } from "@/components/misc/api-alert";
+import { AlertModal } from "@/components/modals/alert-modal";
+import { Heading } from "@/components/index";
 
 const formSchema = z.object({
   name: z
@@ -66,7 +68,7 @@ export const SettingsForm = ({ initialData }: SettingsFormProps) => {
       toast.success("E-Commerce store deleted.");
     } catch (error: any) {
       toast.error(
-        "Removed all products and categories before deleting the e-commerce store.",
+        "Removed all products and categories before deleting this e-commerce store.",
       );
     } finally {
       setLoading(false);
@@ -102,7 +104,7 @@ export const SettingsForm = ({ initialData }: SettingsFormProps) => {
       <div className="flex items-center justify-between">
         <Heading
           title="Store settings"
-          description="Your e-commerce, your way. Customize with ease."
+          description="Manage the settings of your e-commerce stores."
         />
 
         <Button
@@ -115,7 +117,7 @@ export const SettingsForm = ({ initialData }: SettingsFormProps) => {
         </Button>
       </div>
 
-      <Separator />
+      <Separator className="my-3" />
 
       <Form {...form}>
         <form
@@ -147,7 +149,7 @@ export const SettingsForm = ({ initialData }: SettingsFormProps) => {
         </form>
       </Form>
 
-      <Separator />
+      <Separator className="my-3" />
 
       <APIAlert
         title="NEXT_PUBLIC_API_URL"
