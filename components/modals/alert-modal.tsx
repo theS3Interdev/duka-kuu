@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { Modal } from "@/components/index";
+import { Modal } from "@/components/misc/modal";
 
 type AlertModalProps = {
   isOpen: boolean;
@@ -30,8 +30,8 @@ export const AlertModal = ({
 
   return (
     <Modal
-      title="Are you sure?"
-      description="This action cannot be undone."
+      title="Are you absolutely certain?"
+      description="Keep in mind, once you do this, it can't be reversed."
       isOpen={isOpen}
       onClose={onClose}
     >

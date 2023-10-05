@@ -19,7 +19,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Modal } from "@/components/index";
+import { Modal } from "@/components/misc/modal";
 
 const formSchema = z.object({
   name: z
