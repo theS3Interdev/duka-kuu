@@ -21,6 +21,11 @@ export const MainNavigation = ({
       active: pathname === `/${params.storeId}`,
     },
     {
+      href: `/${params.storeId}/heroes`,
+      label: "Heroes",
+      active: pathname === `/${params.storeId}/heroes`,
+    },
+    {
       href: `/${params.storeId}/settings`,
       label: "Settings",
       active: pathname === `/${params.storeId}/settings`,

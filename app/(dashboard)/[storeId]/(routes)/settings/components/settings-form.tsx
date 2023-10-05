@@ -24,7 +24,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import { AlertModal, APIAlert, Heading } from "@/components/index";
+import { APIAlert } from "@/components/misc/api-alert";
+import { AlertModal } from "@/components/modals/alert-modal";
+import { Heading } from "@/components/index";
 
 const formSchema = z.object({
   name: z
@@ -102,7 +104,7 @@ export const SettingsForm = ({ initialData }: SettingsFormProps) => {
       <div className="flex items-center justify-between">
         <Heading
           title="Store settings"
-          description="Your e-commerce, your way. Customize with ease."
+          description="Manage the settings of your e-commerce stores."
         />
 
         <Button
