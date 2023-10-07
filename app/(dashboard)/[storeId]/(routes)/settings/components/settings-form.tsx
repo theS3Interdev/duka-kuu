@@ -110,14 +110,14 @@ export const SettingsForm = ({ initialData }: SettingsFormProps) => {
         <Button
           disabled={loading}
           variant="destructive"
-          size="sm"
           onClick={() => setOpen(true)}
         >
-          <Trash className="h-4 w-4" />
+          <Trash className="mr-2 h-4 w-4" />
+          Delete
         </Button>
       </div>
 
-      <Separator className="my-3" />
+      <Separator orientation="vertical" className="my-4" />
 
       <Form {...form}>
         <form
@@ -149,7 +149,7 @@ export const SettingsForm = ({ initialData }: SettingsFormProps) => {
         </form>
       </Form>
 
-      <Separator className="my-3" />
+      <Separator orientation="vertical" className="my-4" />
 
       <APIAlert
         title="NEXT_PUBLIC_API_URL"
