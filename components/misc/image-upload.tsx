@@ -59,7 +59,6 @@ export const ImageUpload = ({
               fill
               priority
               sizes="100vw"
-              quality={89}
               className="rounded-lg object-cover"
             />
           </div>
@@ -68,8 +67,7 @@ export const ImageUpload = ({
 
       <CldUploadWidget onUpload={onUpload} uploadPreset="default-duka-kuu">
         {({ open }) => {
-          const onClick = (e: any) => {
-            e.preventDefault();
+          const onClick = () => {
             open();
           };
 
@@ -81,7 +79,7 @@ export const ImageUpload = ({
               onClick={onClick}
             >
               <ImagePlus className="mr-2 h-4 w-4" />
-              Upload an Image
+              Upload Hero Image
             </Button>
           );
         }}
