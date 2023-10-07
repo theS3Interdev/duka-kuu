@@ -27,10 +27,10 @@ import { AlertModal } from "@/components/modals/alert-modal";
 import { Heading } from "@/components/index";
 
 const formSchema = z.object({
-  label: z
+  label: z.string().min(1, { message: "The hero section must have a label." }),
+  imageUrl: z
     .string()
-    .min(1, { message: "The hero section must have a valid label." }),
-  imageUrl: z.string().min(1),
+    .min(1, { message: "The hero section must have an image." }),
 });
 
 type HeroFormValues = z.infer<typeof formSchema>;
@@ -48,7 +48,7 @@ export const HeroForm = ({ initialData }: HeroFormProps) => {
 
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Edit hero section" : "Create a hero section";
+  const title = initialData ? "Edit hero section" : "Create hero section";
 
   const description = initialData
     ? "Edit the selected hero section."
@@ -58,7 +58,7 @@ export const HeroForm = ({ initialData }: HeroFormProps) => {
     ? "Hero section updated."
     : "Hero section created.";
 
-  const action = initialData ? "Save Changes" : "Create New";
+  const action = initialData ? "Save Changes" : "Create Hero Section";
 
   const form = useForm<HeroFormValues>({
     resolver: zodResolver(formSchema),
@@ -113,7 +113,7 @@ export const HeroForm = ({ initialData }: HeroFormProps) => {
   };
 
   return (
-    <>
+    <div>
       <AlertModal
         isOpen={open}
         onClose={() => setOpen(false)}
@@ -128,15 +128,15 @@ export const HeroForm = ({ initialData }: HeroFormProps) => {
           <Button
             disabled={loading}
             variant="destructive"
-            size="sm"
             onClick={() => setOpen(true)}
           >
-            <Trash className="h-4 w-4" />
+            <Trash className="mr-2 h-4 w-4" />
+            Delete
           </Button>
         )}
       </div>
 
-      <Separator className="my-3" />
+      <Separator orientation="vertical" className="my-4" />
 
       <Form {...form}>
         <form
@@ -186,6 +186,8 @@ export const HeroForm = ({ initialData }: HeroFormProps) => {
           </Button>
         </form>
       </Form>
-    </>
+
+      <Separator orientation="vertical" className="my-4" />
+    </div>
   );
 };
