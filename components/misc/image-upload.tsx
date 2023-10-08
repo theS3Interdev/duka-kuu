@@ -67,7 +67,8 @@ export const ImageUpload = ({
 
       <CldUploadWidget onUpload={onUpload} uploadPreset="default-duka-kuu">
         {({ open }) => {
-          const onClick = () => {
+          const onClick = (e: any) => {
+            e.preventDefault();
             open();
           };
 
