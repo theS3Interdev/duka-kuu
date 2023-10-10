@@ -186,8 +186,6 @@ export const HeroForm = ({ initialData }: HeroFormProps) => {
           </Button>
         </form>
       </Form>
-
-      <Separator orientation="vertical" className="my-4" />
     </div>
   );
 };

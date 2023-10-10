@@ -11,6 +11,7 @@ type APIListProps = {
 
 export const APIList = ({ entityName, entityIdName }: APIListProps) => {
   const params = useParams();
+
   const origin = useOrigin();
 
   const baseUrl = `${origin}/api/${params.storeId}`;
@@ -22,21 +23,25 @@ export const APIList = ({ entityName, entityIdName }: APIListProps) => {
         variant="public"
         description={`${baseUrl}/${entityName}`}
       />
+
       <APIAlert
         title="GET"
         variant="public"
         description={`${baseUrl}/${entityName}/{${entityIdName}}`}
       />
+
       <APIAlert
         title="POST"
         variant="admin"
         description={`${baseUrl}/${entityName}`}
       />
+
       <APIAlert
         title="PATCH"
         variant="admin"
         description={`${baseUrl}/${entityName}/{${entityIdName}}`}
       />
+
       <APIAlert
         title="DELETE"
         variant="admin"
