@@ -17,10 +17,11 @@ type HeroClientProps = {
 
 export const HeroClient = ({ data }: HeroClientProps) => {
   const params = useParams();
+
   const router = useRouter();
 
   return (
-    <div>
+    <>
       <div className="flex items-center justify-between">
         <Heading
           title={`Hero sections (${data.length})`}
@@ -36,11 +37,11 @@ export const HeroClient = ({ data }: HeroClientProps) => {
 
       <DataTable searchKey="label" columns={columns} data={data} />
 
-      <Heading title="API" description="APIs for hero sections." />
+      <Heading title="API" description="API calls for hero sections." />
 
       <Separator orientation="vertical" className="my-4" />
 
       <APIList entityName="heroes" entityIdName="heroId" />
-    </div>
+    </>
   );
 };

@@ -15,7 +15,7 @@ const HeroSectionsPage = async ({ params }: HeroSectionsPageProps) => {
       storeId: params.storeId,
     },
     orderBy: {
-      createdAt: "desc",
+      createdAt: "asc",
     },
   });
 
