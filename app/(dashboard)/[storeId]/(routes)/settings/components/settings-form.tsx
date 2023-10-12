@@ -65,7 +65,7 @@ export const SettingsForm = ({ initialData }: SettingsFormProps) => {
 
       router.push("/");
 
-      toast.success("E-Commerce store deleted.");
+      toast.success("The store has been deleted.");
     } catch (error: any) {
       toast.error(
         "Removed all products and categories before deleting this e-commerce store.",
@@ -84,7 +84,9 @@ export const SettingsForm = ({ initialData }: SettingsFormProps) => {
 
       router.refresh();
 
-      toast.success("E-Commerce store updated.");
+      router.push(`/${params.storeId}`);
+
+      toast.success("The store has been updated.");
     } catch (error: any) {
       toast.error("An unknown error has occurred.");
     } finally {
