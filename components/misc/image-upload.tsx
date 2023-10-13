@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { CldUploadWidget } from "next-cloudinary";
-import { ImagePlus, Trash } from "lucide-react";
+import { CldUploadButton } from "next-cloudinary";
+import { Trash } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -65,26 +65,11 @@ export const ImageUpload = ({
         ))}
       </div>
 
-      <CldUploadWidget onUpload={onUpload} uploadPreset="default-duka-kuu">
-        {({ open }) => {
-          const onClick = (e: any) => {
-            e.preventDefault();
-            open();
-          };
-
-          return (
-            <Button
-              type="button"
-              variant="secondary"
-              disabled={disabled}
-              onClick={onClick}
-            >
-              <ImagePlus className="mr-2 h-4 w-4" />
-              Upload Hero Image
-            </Button>
-          );
-        }}
-      </CldUploadWidget>
+      <CldUploadButton
+        onUpload={onUpload}
+        uploadPreset="default-duka-kuu"
+        className="upload-button"
+      />
     </div>
   );
 };
