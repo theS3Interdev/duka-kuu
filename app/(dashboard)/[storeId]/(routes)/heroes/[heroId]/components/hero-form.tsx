@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import { ImageUpload } from "@/components/misc/image-upload";
+import { ImageUploadCloudinary } from "@/components/misc/image-upload-cloudinary";
 import { AlertModal } from "@/components/modals/alert-modal";
 import { Heading } from "@/components/index";
 
@@ -150,7 +150,7 @@ export const HeroForm = ({ initialData }: HeroFormProps) => {
               <FormItem>
                 <FormLabel>Hero Image</FormLabel>
                 <FormControl>
-                  <ImageUpload
+                  <ImageUploadCloudinary
                     value={field.value ? [field.value] : []}
                     disabled={loading}
                     onChange={(url) => field.onChange(url)}
