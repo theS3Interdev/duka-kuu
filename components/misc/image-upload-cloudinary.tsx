@@ -20,6 +20,8 @@ export const ImageUploadCloudinary = ({
   onRemove,
   value,
 }: ImageUploadCloudinaryProps) => {
+  const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
+
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -35,7 +37,7 @@ export const ImageUploadCloudinary = ({
   }
 
   return (
-    <div>
+    <>
       <div className="mb-4 flex items-center gap-4">
         {value.map((url) => (
           <div
@@ -65,7 +67,7 @@ export const ImageUploadCloudinary = ({
         ))}
       </div>
 
-      <CldUploadWidget onUpload={onUpload} uploadPreset="default-duka-kuu">
+      <CldUploadWidget onUpload={onUpload} uploadPreset={uploadPreset}>
         {({ open }) => {
           const onClick = (e: MouseEvent) => {
             e.preventDefault();
@@ -80,11 +82,11 @@ export const ImageUploadCloudinary = ({
               onClick={onClick}
             >
               <ImagePlus className="mr-2 h-4 w-4" />
-              Upload Image
+              Upload Hero Image
             </Button>
           );
         }}
       </CldUploadWidget>
-    </div>
+    </>
   );
 };
