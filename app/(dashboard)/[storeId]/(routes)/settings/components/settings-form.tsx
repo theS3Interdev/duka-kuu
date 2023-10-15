@@ -106,7 +106,7 @@ export const SettingsForm = ({ initialData }: SettingsFormProps) => {
       <div className="flex items-center justify-between">
         <Heading
           title="Store settings"
-          description="Manage the settings of your e-commerce stores."
+          description="Manage the settings of your e-commerce store."
         />
 
         <Button
