@@ -76,17 +76,17 @@ export const CellAction = ({ data }: CellActionProps) => {
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => onCopy(data.id)}>
             <Copy className="mr-2 h-4 w-4" />
-            Copy Size ID
+            Copy Id
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => router.push(`/${params.storeId}/sizes/${data.id}`)}
           >
             <Edit className="mr-2 h-4 w-4" />
-            Update Size
+            Update
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setOpen(true)}>
             <Trash className="mr-2 h-4 w-4" />
-            Delete Size
+            Delete
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
