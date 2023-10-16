@@ -78,7 +78,7 @@ export const HeroForm = ({ initialData }: HeroFormProps) => {
       toast.success("Hero section deleted.");
     } catch (error: any) {
       toast.error(
-        "Removed all active categories before deleting this hero section.",
+        "Removed associated categories before deleting this hero section.",
       );
     } finally {
       setLoading(false);

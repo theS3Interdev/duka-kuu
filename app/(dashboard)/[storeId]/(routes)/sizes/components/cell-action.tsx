@@ -43,7 +43,7 @@ export const CellAction = ({ data }: CellActionProps) => {
 
       router.refresh();
     } catch (error) {
-      toast.error("Make sure you remove all products using this size first.");
+      toast.error("Remove associated products before deleting this size.");
     } finally {
       setOpen(false);
       setLoading(false);

@@ -44,7 +44,7 @@ export const CellAction = ({ data }: CellActionProps) => {
       router.refresh();
     } catch (error) {
       toast.error(
-        "Make sure you removed all categories using this hero section first.",
+        "Removed associated categories before deleting this hero section.",
       );
     } finally {
       setOpen(false);
