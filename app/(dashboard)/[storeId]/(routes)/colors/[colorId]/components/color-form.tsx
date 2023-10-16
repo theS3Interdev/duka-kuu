@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Trash } from "lucide-react";
 
-import { Hero } from "@prisma/client";
+import { Color } from "@prisma/client";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -22,24 +22,31 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import { ImageUploadCloudinary } from "@/components/misc/image-upload-cloudinary";
 import { AlertModal } from "@/components/modals/alert-modal";
 import { Heading } from "@/components/index";
 
 const formSchema = z.object({
-  label: z.string().min(1, { message: "The hero section must have a label." }),
-  imageUrl: z
+  name: z.string().min(1, { message: "The product color must have a name." }),
+  value: z
     .string()
-    .min(1, { message: "The hero section must have an image." }),
+    .min(4, {
+      message: "The product value must be at least 4 characters in length.",
+    })
+    .max(7, {
+      message: "The product value must be at most 7 characters in length.",
+    })
+    .regex(/^#/, {
+      message: "The product value must be a valid hexadecimal code.",
+    }),
 });
 
-type HeroFormValues = z.infer<typeof formSchema>;
+type ColorFormValues = z.infer<typeof formSchema>;
 
-type HeroFormProps = {
-  initialData: Hero | null;
+type ColorFormProps = {
+  initialData: Color | null;
 };
 
-export const HeroForm = ({ initialData }: HeroFormProps) => {
+export const ColorForm = ({ initialData }: ColorFormProps) => {
   const params = useParams();
 
   const router = useRouter();
@@ -48,61 +55,59 @@ export const HeroForm = ({ initialData }: HeroFormProps) => {
 
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Edit hero section" : "Create hero section";
+  const title = initialData ? "Edit product color" : "Create a product color";
 
   const description = initialData
-    ? "Edit the selected hero section."
-    : "Create the desired hero section.";
+    ? "Edit the selected product color."
+    : "Create the desired product color.";
 
   const toastMessage = initialData
-    ? "Hero section updated."
-    : "Hero section created.";
+    ? "Product color updated."
+    : "Product color created.";
 
-  const action = initialData ? "Save Changes" : "Create Hero Section";
+  const action = initialData ? "Save Changes" : "Create Product Color";
 
-  const form = useForm<HeroFormValues>({
+  const form = useForm<ColorFormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: initialData || { label: "", imageUrl: "" },
+    defaultValues: initialData || { name: "", value: "" },
   });
 
   const onDelete = async () => {
     try {
       setLoading(true);
 
-      await axios.delete(`/api/${params.storeId}/heroes/${params.heroId}`);
+      await axios.delete(`/api/${params.storeId}/colors/${params.colorId}`);
 
       router.refresh();
 
-      router.push(`/${params.storeId}/heroes`);
+      router.push(`/${params.storeId}/colors`);
 
-      toast.success("Hero section deleted.");
+      toast.success("Product color deleted.");
     } catch (error: any) {
-      toast.error(
-        "Removed associated categories before deleting this hero section.",
-      );
+      toast.error("Remove associated products before deleting this color.");
     } finally {
       setLoading(false);
       setOpen(false);
     }
   };
 
-  const onSubmit = async (data: HeroFormValues) => {
+  const onSubmit = async (data: ColorFormValues) => {
     try {
       setLoading(true);
 
       if (initialData) {
         console.log(data);
         await axios.patch(
-          `/api/${params.storeId}/heroes/${params.heroId}`,
+          `/api/${params.storeId}/colors/${params.colorId}`,
           data,
         );
       } else {
-        await axios.post(`/api/${params.storeId}/heroes/`, data);
+        await axios.post(`/api/${params.storeId}/colors/`, data);
       }
 
       router.refresh();
 
-      router.push(`/${params.storeId}/heroes`);
+      router.push(`/${params.storeId}/colors`);
 
       toast.success(toastMessage);
     } catch (error: any) {
@@ -143,36 +148,17 @@ export const HeroForm = ({ initialData }: HeroFormProps) => {
           onSubmit={form.handleSubmit(onSubmit)}
           className="w-full space-y-8"
         >
-          <FormField
-            control={form.control}
-            name="imageUrl"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Hero Image</FormLabel>
-                <FormControl>
-                  <ImageUploadCloudinary
-                    value={field.value ? [field.value] : []}
-                    disabled={loading}
-                    onChange={(url) => field.onChange(url)}
-                    onRemove={() => field.onChange("")}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <div className="grid grid-cols-3 gap-8">
+          <div className="gap-8 md:grid md:grid-cols-3">
             <FormField
               control={form.control}
-              name="label"
+              name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Label</FormLabel>
+                  <FormLabel>Name</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Hero section label"
+                      placeholder="Color name"
                       {...field}
                     />
                   </FormControl>
@@ -180,7 +166,32 @@ export const HeroForm = ({ initialData }: HeroFormProps) => {
                 </FormItem>
               )}
             />
+
+            <FormField
+              control={form.control}
+              name="value"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Value</FormLabel>
+                  <FormControl>
+                    <div className="flex items-center gap-x-4">
+                      <Input
+                        disabled={loading}
+                        placeholder="Color value"
+                        {...field}
+                      />
+                      <div
+                        className="rounded-full border p-4"
+                        style={{ backgroundColor: field.value }}
+                      />
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           </div>
+
           <Button disabled={loading} className="ml-auto" type="submit">
             {action}
           </Button>
