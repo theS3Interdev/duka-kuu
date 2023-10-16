@@ -91,9 +91,7 @@ export const CategoryForm = ({ initialData, heroes }: CategoryFormProps) => {
 
       toast.success("Product category deleted.");
     } catch (error: any) {
-      toast.error(
-        "Removed all the products in this category before deleting it.",
-      );
+      toast.error("Remove associated products before deleting this category.");
     } finally {
       setLoading(false);
       setOpen(false);

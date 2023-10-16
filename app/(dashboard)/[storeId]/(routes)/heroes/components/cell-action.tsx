@@ -44,7 +44,7 @@ export const CellAction = ({ data }: CellActionProps) => {
       router.refresh();
     } catch (error) {
       toast.error(
-        "Make sure you removed all categories using this hero section first.",
+        "Removed associated categories before deleting this hero section.",
       );
     } finally {
       setOpen(false);
@@ -78,17 +78,17 @@ export const CellAction = ({ data }: CellActionProps) => {
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => onCopy(data.id)}>
             <Copy className="mr-2 h-4 w-4" />
-            Copy Hero ID
+            Copy Id
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => router.push(`/${params.storeId}/heroes/${data.id}`)}
           >
             <Edit className="mr-2 h-4 w-4" />
-            Update Hero Section
+            Update
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setOpen(true)}>
             <Trash className="mr-2 h-4 w-4" />
-            Delete Hero Section
+            Delete
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

@@ -68,7 +68,7 @@ export const SettingsForm = ({ initialData }: SettingsFormProps) => {
       toast.success("The store has been deleted.");
     } catch (error: any) {
       toast.error(
-        "Removed all products and categories before deleting this e-commerce store.",
+        "Removed associated products and categories before deleting this e-commerce store.",
       );
     } finally {
       setLoading(false);
