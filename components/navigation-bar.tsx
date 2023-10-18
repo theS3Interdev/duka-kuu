@@ -23,7 +23,7 @@ export const NavigationBar = async () => {
       <div className="flex h-16 items-center px-4">
         <div className="flex items-center space-x-3">
           {/* logo section start */}
-          <h1 className="font-montserrat text-xl font-bold">Soko Kuu</h1>
+          <h1 className="font-montserrat text-xl font-bold">Duka Kuu</h1>
           {/* logo section end */}
 
           {/* store switcher section start */}
